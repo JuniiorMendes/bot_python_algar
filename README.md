@@ -1,6 +1,6 @@
 # MicroSIP_Automation
 
-### In Developing
+### In Developing for now
 
 Projeto feito para intuito de reduzir algumas operações repetitivas feitas
 Dentro do programa MicroSIP como fazer ligações, realizar envio de mensagens

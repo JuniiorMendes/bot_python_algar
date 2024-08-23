@@ -1,40 +1,24 @@
 import os
 
-from pyautogui import *
-from pygetwindow import *
-
-class Microsip:
-    def __init__(self):
-        self.program: Win32Window = getWindowsWithTitle("MicroSIP")[0]
-    
-    def get_size(self):
-        return (self.program.size.width, self.program.size.height)
-
-    def get_position(self):
-        return (self.program.top, self.program.left)
-
-    def mouseMove(self):
-        moveTo(20,10, duration=3)
-
-    def localization(self, imgDir):
-        return locateOnScreen(imgDir)
+from MicroSIP_lib.MicroSIP import *
 
 def main():
     micro = Microsip()
-    micro.program.activate()
-    local1 = micro.localization("img/captura01.PNG")
-    moveTo(local1[0], local1[1], duration = 1)
-    moveTo(local1[0], local1[1] - 25)
-    click()
-    typewrite("2688", interval = 0.5)
+    micro.focus()
+
+    btn1_left, btn1_top, _, _ = micro.locate("img/captura01.PNG")
+
+    micro \
+        .move_mouse(btn1_left, btn1_top) \
+        .move_mouse(btn1_left, btn1_top - 25, mouse_click=True)
+
+    typewrite("2688", interval = 0.1)
 
     try:
-        local2 = micro.localization("img/captura02.PNG")
-        moveTo(local2[0], local2[1], duration = 1)
-        click()
+        btn2_left, btn2_top, _, _ = micro.localization("img/captura02.PNG")
+        micro.move_mouse(btn2_left, btn2_top, mouse_click=False)
     except Exception() as err:
         pass
-
 
 if __name__ == "__main__":
     main()

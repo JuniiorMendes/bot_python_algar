@@ -23,6 +23,13 @@ def main():
 
     print(ramal.get())
 
+    if(not ramal.get()):
+        exit()
+    if(len(ramal.get()) == 12):
+        typewrite("09" + ramal.get(), interval=0.5)
+    else:
+        typewrite(ramal.get(), interval=0.5)
+
     press("super")
     sleep(2)
     typewrite("microsip", interval=0.5)
@@ -54,8 +61,7 @@ def main():
 
     hotkey("ctrl", "a")
     press("delete")
-
-    typewrite(ramal.get(), interval=0.5)
+        
     press("enter")
 
 if __name__ == "__main__":

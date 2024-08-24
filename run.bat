@@ -1,2 +1,3 @@
 @echo off
-python main.py
+call activate_venv.bat
+call python main.py

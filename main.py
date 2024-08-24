@@ -1,12 +1,11 @@
-import os
-
 from tkinter import *
 from tkinter import ttk
 from MicroSIP_lib.MicroSIP import *
 from time import sleep
 
-def passei():
-    pass
+import re
+
+number_pattern = r"\b\d{1, 12}\b"
 
 def main():
     root = Tk()
@@ -21,7 +20,7 @@ def main():
     ttk.Button(frm, text="Start", command = root.destroy).grid(column=2, row=0)
     root.mainloop()
 
-    print(ramal.get())
+    ramal.set(re.findall(number_pattern, ramal.get()))
 
     if(not ramal.get()):
         exit()

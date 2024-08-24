@@ -1,9 +1,12 @@
 from pyautogui import *
 from pygetwindow import *
 
-class Microsip:
-    def __init__(self):
-        self.program: Win32Window = getWindowsWithTitle("MicroSIP")[0]
+class Microsip():
+    def __init__(self, program_name: str):
+        self.program: Win32Window = \
+            getWindowsWithTitle("MicroSIP")[0]
+        
+        self.fixed_size: list = [259, 465]
 
     def get_size(self):
         return (self.program.size.width, self.program.size.height)

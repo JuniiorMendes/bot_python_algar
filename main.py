@@ -3,23 +3,33 @@ import os
 from MicroSIP_lib.MicroSIP import *
 
 def main():
-    micro = Microsip()
-    micro.focus()
+    program_name: str
 
-    btn1_left, btn1_top, _, _ = micro.locate("img/captura01.PNG")
+    for name in getAllTitles():
+        if "MicroSIP" in name:
+            program_name = name
 
-    micro \
-        .move_mouse(btn1_left, btn1_top) \
-        .move_mouse(btn1_left, btn1_top - 25, mouse_click=True)
+    microsip = Microsip(program_name)
+    microsip.focus()
 
-    typewrite("2688", interval = 0.1)
+    width, height = microsip.get_size()
+    left, top = microsip.get_position()
 
-    try:
-        btn2_left, btn2_top, _, _ = micro.localization("img/captura02.PNG")
-        micro.move_mouse(btn2_left, btn2_top, mouse_click=False)
-    except Exception() as err:
-        pass
+    centerx, centery = \
+        microsip.program.center.x, \
+        microsip.program.center.y
+
+    percent_width = \
+        width / microsip.fixed_size[0]
+
+    percent_height = \
+        height / microsip.fixed_size[1]
+
+    moveTo(centerx, centery - (5 * 30) * percent_height)
+    click()
+
+    typewrite("2681")
+    keyDown("enter")
 
 if __name__ == "__main__":
     main()
-

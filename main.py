@@ -28,6 +28,9 @@ def main():
     moveTo(centerx, centery - (5 * 30) * percent_height)
     click()
 
+    hotkey("ctrl", "a")
+    keyDown("delete")
+
     typewrite("2681")
     keyDown("enter")
 

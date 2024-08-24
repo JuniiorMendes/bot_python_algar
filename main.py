@@ -1,10 +1,27 @@
 import os
 
+from tkinter import *
+from tkinter import ttk
 from MicroSIP_lib.MicroSIP import *
 from time import sleep
 
+def passei():
+    pass
+
 def main():
-    program_name: str
+    root = Tk()
+    
+    ramal = StringVar()
+
+    frm = ttk.Frame(root, padding=10)
+    frm.grid()
+    ttk.Label(frm, text="Entre com o ramal ou numero de telefone: ").grid(column=0, row=0)
+    dadosEntry = ttk.Entry(frm, textvariable=ramal)
+    dadosEntry.grid(column=1, row=0)
+    ttk.Button(frm, text="Start", command = root.destroy).grid(column=2, row=0)
+    root.mainloop()
+
+    print(ramal.get())
 
     press("super")
     sleep(2)
@@ -38,8 +55,9 @@ def main():
     hotkey("ctrl", "a")
     press("delete")
 
-    typewrite("2687", interval=0.5)
+    typewrite(ramal.get(), interval=0.5)
     press("enter")
 
 if __name__ == "__main__":
     main()
+

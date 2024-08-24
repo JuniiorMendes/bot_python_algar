@@ -9,7 +9,7 @@ number_pattern = r"^\d{1,12}$"
 
 def main():
     root = Tk()
-    
+
     ramal = StringVar()
 
     frm = ttk.Frame(root, padding=10)
@@ -20,16 +20,11 @@ def main():
     ttk.Button(frm, text="Start", command = root.destroy).grid(column=2, row=0)
     root.mainloop()
 
-    ramal.set(re.findall(number_pattern, str(ramal.get()))[0])
+    ramal.set(str(re.findall(number_pattern, str(ramal.get()))[0]))
 
-    print(str(ramal.get()))
-
-    if(not ramal.get()):
+    if(len(str(ramal.get())) == 0):
+        print("exitting...")
         exit()
-    if(len(ramal.get()) == 12):
-        typewrite("09" + ramal.get(), interval=0.5)
-    else:
-        typewrite(ramal.get(), interval=0.5)
 
     press("super")
     sleep(2)
@@ -62,7 +57,12 @@ def main():
 
     hotkey("ctrl", "a")
     press("delete")
-        
+
+    if(len(str(ramal.get())) == 11):
+        ramal.set("09" + str(ramal.get()))
+
+    typewrite(str(ramal.get()), interval=0.5)
+
     press("enter")
 
 if __name__ == "__main__":

@@ -5,7 +5,7 @@ from time import sleep
 
 import re
 
-number_pattern = r"\b\d{1, 12}\b"
+number_pattern = r"^\d{1,12}$"
 
 def main():
     root = Tk()
@@ -20,7 +20,9 @@ def main():
     ttk.Button(frm, text="Start", command = root.destroy).grid(column=2, row=0)
     root.mainloop()
 
-    ramal.set(re.findall(number_pattern, ramal.get()))
+    ramal.set(re.findall(number_pattern, str(ramal.get()))[0])
+
+    print(str(ramal.get()))
 
     if(not ramal.get()):
         exit()

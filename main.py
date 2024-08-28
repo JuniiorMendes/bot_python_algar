@@ -7,7 +7,9 @@ import re
 
 number_pattern = r"^\d{1,12}$"
 
-def main():
+def init_interface():
+    global ramal
+
     root = Tk()
 
     ramal = StringVar()
@@ -21,6 +23,9 @@ def main():
     root.mainloop()
 
     ramal.set(str(re.findall(number_pattern, str(ramal.get()))[0]))
+
+def main():
+    init_interface()
 
     if(len(str(ramal.get())) == 0):
         print("exitting...")
